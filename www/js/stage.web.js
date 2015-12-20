@@ -1,25 +1,21 @@
 /*
- * Stage.js 1.0.0
+ * Stage.js 0.8.3
  * 
  * @copyright 2015 Ali Shakiba, Piqnt LLC
  * @license The MIT License
  */
 
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Stage=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = require("../lib/");
-},{"../lib/":2}],2:[function(require,module,exports){
 var extend = require("./util/extend");
 
 var is = require("./util/is");
-
-var _loaded = false;
 
 var _config = {};
 
 var _app_queue = [];
 
 function Class(app) {
-    return Class.app(app);
+    _app_queue.push(app);
 }
 
 Class.config = function() {
@@ -31,16 +27,11 @@ Class.config = function() {
 };
 
 Class.app = function(app) {
-    if (!_loaded) {
-        _app_queue.push(app);
-        return;
-    }
     var loader = Class.config("app-loader");
     loader(app);
 };
 
 Class.start = function() {
-    _loaded = true;
     while (_app_queue.length) {
         var args = _app_queue.shift();
         Class.app(args);
@@ -88,9 +79,7 @@ window.addEventListener("load", function() {
 }, false);
 
 module.exports = Class;
-
-
-},{"./util/extend":3,"./util/is":4}],3:[function(require,module,exports){
+},{"./util/extend":2,"./util/is":3}],2:[function(require,module,exports){
 module.exports = function(base) {
     for (var i = 1; i < arguments.length; i++) {
         var obj = arguments[i];
@@ -104,7 +93,7 @@ module.exports = function(base) {
 };
 
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var objProto = Object.prototype;
 
 var owns = objProto.hasOwnProperty;

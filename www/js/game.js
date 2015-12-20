@@ -863,8 +863,8 @@ Stage(function (canvas, context) {
     };
 
     SFX = {
-        laser: new Audio('39459__THE_bizniss__laser.wav'),
-        explosion: new Audio('51467__smcameron__missile_explosion.wav')
+        laser: new Audio('sound/39459__THE_bizniss__laser.wav'),
+        explosion: new Audio('sound/51467__smcameron__missile_explosion.wav')
     };
 
 // preload audio
@@ -1036,17 +1036,8 @@ Stage(function (canvas, context) {
 
     };
 
-
-    $(function () {
-        //var canvas = $("#canvas");
-        //$('#canvas').attr('width', window.innerWidth);
-        //$('#canvas').attr('height', window.innerHeight);
-
         Game.canvasWidth = canvas.width;
         Game.canvasHeight = canvas.height;
-
-        //var context = canvas[0].getContext("2d");
-
         Text.context = context;
         Text.face = vector_battle;
 
@@ -1129,7 +1120,7 @@ Stage(function (canvas, context) {
         var elapsed;
         var delta;
 
-        var canvasNode = canvas[0];
+        var canvasNode = canvas;
 
         // shim layer with setTimeout fallback
         // from here:
@@ -1140,7 +1131,7 @@ Stage(function (canvas, context) {
                     window.mozRequestAnimationFrame ||
                     window.oRequestAnimationFrame ||
                     window.msRequestAnimationFrame ||
-                    function (/* function */ callback, /* DOMElement */ element) {
+                    function (callback, element) {
                         window.setTimeout(callback, 1000 / 60);
                     };
         })();
@@ -1233,6 +1224,4 @@ Stage(function (canvas, context) {
                     break;
             }
         });
-    });
-
-});
+  });

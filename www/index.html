@@ -2,32 +2,22 @@
   <head>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-migrate/jquery-migrate.min.js"></script>
-    <script src="dist/stage.web.js"></script>
+    <script src="js/stage.web.js"></script>
     <script src="js/vector_battle_regular.typeface.js"></script>
+    <style type='text/css'>
+  * {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
 
-    <style>
-      #canvas { border:1px solid black; top:0px; left:0px; }
-      .button { position:absolute; border:1px solid black; }
-      #left-controls { position:absolute; left:1px; bottom:0px; display:none; }
-      #right-controls { position:absolute; right:1px; bottom:0px; display:none; }
-      #up { width:200px; height:100px; bottom:100px;}
-      #left { width:100px; height:100px; bottom:0px;}
-      #right { width:100px; height:100px; bottom:0px; left:100px; }
-      #space { width:200px; height:200px; bottom:0px; right:0px; }
+body,html {
+	height: 100%;
+	width: 100%;
+}
     </style>
   </head>
   <body>
     <script src="js/game.js"></script>
-    <!-- <div id="game-container">
-      <canvas id="canvas" width="600" height="1024"></canvas>
-      <div id="left-controls">
-        <div id="up" class='button'>THRUST</div>
-        <div id="left" class='button'>LEFT</div>
-        <div id="right" class='button'>RIGHT</div>
-      </div>
-      <div id="right-controls">
-        <div id="space" class='button'>FIRE</div>
-      </div>
-    </div> -->
   </body>
 </html>

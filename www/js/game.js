@@ -1219,17 +1219,14 @@ Stage(function(canvas, context) {
     window.gameStart = true;
   });
 
-  $('#left-controls, #right-controls').bind('touchstart touchmove touchend', function(e) {
+  $('.controller').bind('touchstart touchmove touchend', function(e) {
     e.preventDefault();
     if (e.type != 'touchend') {
       for (k in KEY_STATUS) {
         KEY_STATUS[k] = false;
       }
     }
-    var touches = e.type == 'touchend' ? e.originalEvent.changedTouches : e.originalEvent.touches
-    for (var i = 0; i < touches.length; i++) {
-      var ele = document.elementFromPoint(touches[i].pageX, touches[i].pageY);
-      KEY_STATUS[ele.id] = (e.type != 'touchend');
-    }
+
+   KEY_STATUS[$(this).attr('id')] = (e.type != 'touchend');
   });
 });
